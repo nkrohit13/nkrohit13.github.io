@@ -10,9 +10,10 @@ export type Props = HeadProps & {
     showHeader?: boolean;
     contactTitle?: string;
     contactText?: string;
+    showContact?: boolean;
 };
 
-const { showHeader = true, contactTitle, contactText, ...head } = Astro.props;
+const { showHeader = true, contactTitle, contactText, showContact = true, ...head } = Astro.props;
 ---
 
 <!doctype html>
@@ -38,7 +39,7 @@ const { showHeader = true, contactTitle, contactText, ...head } = Astro.props;
             <main class="grow w-full max-w-3xl mx-auto toc-offset">
                 <slot />
             </main>
-            <Footer contactTitle={contactTitle} contactText={contactText} />
+            <Footer contactTitle={contactTitle} contactText={contactText} showContact={showContact} />
         </div>
     </body>
 </html>

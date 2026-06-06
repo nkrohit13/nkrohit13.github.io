@@ -5,7 +5,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://nkrohit13.github.io",
+    site: "https://nirmalrohit.in",
     base: '/',
     integrations: [tailwind(), sitemap(), mdx()],
     output: 'static',

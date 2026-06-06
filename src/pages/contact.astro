@@ -9,7 +9,7 @@ const { title, seo } = contactEntry?.data || {};
 const { Content } = contactEntry ? await render(contactEntry) : { Content: null };
 ---
 
-<BaseLayout title={seo?.title ?? title} description={seo?.description} showHeader={false}>
+<BaseLayout title={seo?.title ?? title} description={seo?.description} showHeader={false} showContact={false}>
     <div class="max-w-3xl mx-auto">
         <h1 class="mb-12 text-3xl leading-tight font-bold sm:mb-16 sm:text-5xl">
             {title || 'Get in Touch'}
@@ -17,7 +17,7 @@ const { Content } = contactEntry ? await render(contactEntry) : { Content: null 
     </div>
 
     <!-- Contact Section with Custom Title/Subtitle -->
-    <ContactForm 
+    <ContactForm
         title="We'd Love to Hear From You"
         subtitle="Feel free to reach out with any questions or inquiries. Our team typically responds within 24 hours."
     />

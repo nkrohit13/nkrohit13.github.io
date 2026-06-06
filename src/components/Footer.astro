@@ -8,13 +8,14 @@ const navLinks = siteConfig.footerNavLinks || [];
 interface Props {
     contactTitle?: string;
     contactText?: string;
+    showContact?: boolean;
 }
 
-const { contactTitle, contactText } = Astro.props;
+const { contactTitle, contactText, showContact = true } = Astro.props;
 ---
 
 <footer class="w-full max-w-3xl mx-auto pt-12 pb-10 sm:pt-24 sm:pb-14">
-    <Contact class="mb-12" title={contactTitle} subtitle={contactText} />
+    {showContact && <Contact class="mb-12" title={contactTitle} subtitle={contactText} />}
     {
         navLinks.length > 0 && (
             <div class="mb-4 flex flex-wrap gap-x-6 gap-y-1">

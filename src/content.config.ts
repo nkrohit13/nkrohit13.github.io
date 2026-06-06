@@ -36,22 +36,9 @@ const pages = defineCollection({
     })
 });
 
-const challenges = defineCollection({
-    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/challenges' }),
-    schema: z.object({
-        title: z.string(),
-        description: z.string(),
-        publishDate: z.date(),
-        updatedDate: z.date().optional(),
-        isFeatured: z.boolean().optional(),
-        isDraft: z.boolean().optional(),
-        tags: z.array(z.string()).optional(),
-        seo: seoSchema.optional()
-    })
-});
-
 const projects = defineCollection({
-    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/projects' }),
+    // loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/projects' }),
+    type: 'content',
     schema: z.object({
         title: z.string(),
         description: z.string().optional(),
@@ -66,4 +53,4 @@ const projects = defineCollection({
     })
 });
 
-export const collections = { blog, pages, challenges, projects };
+export const collections = { blog, pages, projects };

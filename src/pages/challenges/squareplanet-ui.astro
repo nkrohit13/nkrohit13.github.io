@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Squareplanet design challenge" description="A collection of UI design challenges for Squareplanet." showHeader={false}>
+    <div class="max-w-4xl mx-auto mb-12 sm:mb-16">
+        <h1 class="text-3xl leading-tight font-bold sm:text-5xl mb-12">Squareplanet design challenge</h1>
+
+        <!-- Tabs Navigation -->
+        <div class="mb-12 border-b border-gray-200 dark:border-gray-800">
+            <nav class="-mb-px flex space-x-8 overflow-x-auto" aria-label="Tabs">
+                <button class="tab-btn active whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium" data-target="daily-ui">
+                    Daily UI
+                    <span class="ml-2 rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-900 dark:bg-gray-800 dark:text-gray-100">90+</span>
+                </button>
+                <button
+                    class="tab-btn whitespace-nowrap border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:border-gray-700 dark:hover:text-gray-300"
+                    data-target="graphic-design"
+                >
+                    Graphic Design
+                </button>
+                <button
+                    class="tab-btn whitespace-nowrap border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:border-gray-700 dark:hover:text-gray-300"
+                    data-target="info-arch"
+                >
+                    Information Architecture
+                </button>
+                <button
+                    class="tab-btn whitespace-nowrap border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:border-gray-700 dark:hover:text-gray-300"
+                    data-target="landing-page"
+                >
+                    Landing Page Design
+                </button>
+            </nav>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="daily-ui" class="tab-content block">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <!-- Gallery Placeholders -->
+                <div class="aspect-square rounded-xl bg-gray-200 dark:bg-gray-800 overflow-hidden">
+                    <img
+                        src="https://placehold.co/600x600/e2e8f0/64748b?text=UI+1"
+                        alt="Daily UI 1"
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                    />
+                </div>
+                <div class="aspect-square rounded-xl bg-gray-200 dark:bg-gray-800 overflow-hidden">
+                    <img
+                        src="https://placehold.co/600x600/e2e8f0/64748b?text=UI+2"
+                        alt="Daily UI 2"
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                    />
+                </div>
+                <div class="aspect-square rounded-xl bg-gray-200 dark:bg-gray-800 overflow-hidden">
+                    <img
+                        src="https://placehold.co/600x600/e2e8f0/64748b?text=UI+3"
+                        alt="Daily UI 3"
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                    />
+                </div>
+                <div class="aspect-square rounded-xl bg-gray-200 dark:bg-gray-800 overflow-hidden">
+                    <img
+                        src="https://placehold.co/600x600/e2e8f0/64748b?text=UI+4"
+                        alt="Daily UI 4"
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                    />
+                </div>
+                <div class="aspect-square rounded-xl bg-gray-200 dark:bg-gray-800 overflow-hidden">
+                    <img
+                        src="https://placehold.co/600x600/e2e8f0/64748b?text=UI+5"
+                        alt="Daily UI 5"
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                    />
+                </div>
+                <div class="aspect-square rounded-xl bg-gray-200 dark:bg-gray-800 overflow-hidden">
+                    <img
+                        src="https://placehold.co/600x600/e2e8f0/64748b?text=UI+6"
+                        alt="Daily UI 6"
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <div id="graphic-design" class="tab-content hidden">
+            <h2 class="text-2xl font-bold mb-4">Graphic Design Challenge</h2>
+            <p class="text-gray-600 dark:text-gray-400">Explore typography, layout, and visual composition through these creative prompts.</p>
+            <div class="mt-8 p-12 text-center rounded-xl bg-gray-50 dark:bg-gray-900 border border-dashed border-gray-200 dark:border-gray-800">
+                <p class="text-gray-500">Graphic Design challenges coming soon.</p>
+            </div>
+        </div>
+
+        <div id="info-arch" class="tab-content hidden">
+            <h2 class="text-2xl font-bold mb-4">Information Architecture</h2>
+            <p class="text-gray-600 dark:text-gray-400">Master the art of organizing information and structuring complex systems.</p>
+            <div class="mt-8 p-12 text-center rounded-xl bg-gray-50 dark:bg-gray-900 border border-dashed border-gray-200 dark:border-gray-800">
+                <p class="text-gray-500">IA challenges coming soon.</p>
+            </div>
+        </div>
+
+        <div id="landing-page" class="tab-content hidden">
+            <h2 class="text-2xl font-bold mb-4">Landing Page Design</h2>
+            <p class="text-gray-600 dark:text-gray-400">Focus on conversion, storytelling, and visual impact with these landing page exercises.</p>
+            <div class="mt-8 p-12 text-center rounded-xl bg-gray-50 dark:bg-gray-900 border border-dashed border-gray-200 dark:border-gray-800">
+                <p class="text-gray-500">Landing Page challenges coming soon.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach((tab) => {
+                tab.addEventListener('click', () => {
+                    // Remove active state from all tabs
+                    tabs.forEach((t) => {
+                        t.classList.remove('border-main', 'text-main');
+                        t.classList.add(
+                            'border-transparent',
+                            'text-gray-500',
+                            'hover:border-gray-300',
+                            'hover:text-gray-700',
+                            'dark:text-gray-400',
+                            'dark:hover:border-gray-700',
+                            'dark:hover:text-gray-300'
+                        );
+                        // Reset specific active styling
+                        t.classList.remove('active');
+                    });
+
+                    // Add active state to clicked tab
+                    tab.classList.remove(
+                        'border-transparent',
+                        'text-gray-500',
+                        'hover:border-gray-300',
+                        'hover:text-gray-700',
+                        'dark:text-gray-400',
+                        'dark:hover:border-gray-700',
+                        'dark:hover:text-gray-300'
+                    );
+                    tab.classList.add('border-main', 'text-main', 'active');
+
+                    // Hide all content
+                    contents.forEach((content) => content.classList.add('hidden'));
+
+                    // Show target content
+                    const targetId = tab.getAttribute('data-target');
+                    if (targetId) {
+                        const targetContent = document.getElementById(targetId);
+                        if (targetContent) {
+                            targetContent.classList.remove('hidden');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .tab-btn.active {
+            border-color: var(--border-main);
+            color: var(--text-main);
+        }
+    </style>
+</BaseLayout>

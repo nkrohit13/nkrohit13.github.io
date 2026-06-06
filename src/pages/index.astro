@@ -1,38 +1,81 @@
 ---
-import { getCollection } from 'astro:content';
-import Hero from '../components/Hero.astro';
-import ProjectPreview from '../components/ProjectPreview.astro';
+import BaseHead from '../components/BaseHead.astro';
 import siteConfig from '../data/site-config';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { sortItemsByDateDesc } from '../utils/data-utils';
+import { ClientRouter } from 'astro:transitions';
 
 const { description, image } = siteConfig;
-
-const projects = await getCollection('projects');
-const latestProjects = projects.sort(sortItemsByDateDesc).slice(0, 2);
 ---
 
-<BaseLayout description={description} image={image}>
-    <Hero />
-    {
-        latestProjects.length > 0 ? (
-            <div class="mb-16 sm:mb-24">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {latestProjects.map((project) => (
-                        <ProjectPreview project={project} showThumbnail={true} headingLevel="h3" />
-                    ))}
-                </div>
-                <div class="mt-8 text-center">
-                    <a
-                        href="/projects"
-                        class="inline-block px-6 py-2 text-base font-medium text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50"
-                    >
-                        View all projects <span aria-hidden="true">→</span>
-                    </a>
-                </div>
+<!doctype html>
+<html lang="en" class="antialiased break-words">
+    <head>
+        <BaseHead description={description} image={image} />
+        <script is:inline>
+            // Check for dark mode preference at the root level
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        </script>
+        <ClientRouter />
+    </head>
+    <body class="transition-colors duration-200" style="background-color: var(--bg-main); color: var(--text-main);">
+        <main class="w-full max-w-3xl mx-auto px-4 md:px-8 py-24 sm:py-32">
+            <h1 class="text-3xl leading-tight font-bold sm:text-5xl mb-6">
+                Hi, Nirmal here
+            </h1>
+            
+            <p class="text-lg leading-relaxed mb-12 max-w-2xl">
+                Portfolio under construction.
+            </p>
+            
+            <div class="border-t border-dashed border-main pt-8">
+                <p class="text-lg leading-relaxed mb-4">
+                    Follow me on-
+                </p>
+                
+                <ul class="flex flex-col gap-4">
+                    <li>
+                        <a href="https://x.com/nirmal_k03" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 hover:underline hover:underline-offset-2 group">
+                            <svg class="w-5 h-5 fill-current text-gray-500 group-hover:text-[var(--text-main)] transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                <path d="M18.42,14.009L27.891,3h-2.244l-8.224,9.559L10.855,3H3.28l9.932,14.455L3.28,29h2.244l8.684-10.095,6.936,10.095h7.576l-10.301-14.991h0Zm-3.074,3.573l-1.006-1.439L6.333,4.69h3.447l6.462,9.243,1.006,1.439,8.4,12.015h-3.447l-6.854-9.804h0Z"></path>
+                            </svg>
+                            <span>X (Formerly Twitter)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://dribbble.com/nkrohit" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 hover:underline hover:underline-offset-2 group">
+                            <svg class="w-5 h-5 fill-current text-gray-500 group-hover:text-[#EA4C89] transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                <path d="M16,2C8.266,2,2,8.271,2,15.997c0,7.345,5.666,13.374,12.864,13.952v.051h1.136c7.734,0,14-6.271,14-13.997S23.734,2,16,2Zm11.563,12.045c-1.778-.249-3.605-.171-5.391,.21-.352-.988-.805-1.934-1.335-2.838,1.47-.848,2.813-1.914,3.967-3.16,1.41,1.602,2.389,3.591,2.759,5.788Zm-4.416-7.34c-1.039,1.124-2.255,2.08-3.587,2.828-.914-1.161-1.966-2.212-3.145-3.11l-.029-.022-.03-.02s-.003-.002-.008-.006c-.006-.004-.015-.01-.025-.018-.022-.016-.049-.036-.081-.06-.039-.029-.079-.059-.121-.091-.032-.024-.066-.05-.103-.078-.08-.06-.169-.126-.25-.184-.057-.041-.138-.098-.221-.149-.016-.011-.033-.023-.053-.036-.108-.075-.27-.187-.418-.278-.138-.097-.324-.207-.446-.278-.118-.069-.246-.142-.325-.187-.026-.015-.046-.027-.06-.034-.015-.009-.028-.016-.033-.019h0c-.01-.006-.021-.012-.031-.017-.003-.002-.007-.004-.01-.006-.018-.01-.035-.019-.054-.03-.021-.012-.038-.021-.05-.029l-.009-.006-.03-.018c-.11-.067-.224-.128-.286-.161-.008-.004-.015-.008-.021-.012l-.026-.014-.027-.013c-.053-.025-.132-.063-.221-.105,.822-.183,1.676-.282,2.554-.282,2.691,0,5.168,.909,7.147,2.434Zm-12.826-.967s.007,.002,.011,.004c.193,.061,.377,.119,.554,.182,.065,.025,.129,.049,.192,.073,.288,.109,.544,.206,.759,.306l.061,.031,.015,.007c.135,.063,.33,.156,.506,.24,.093,.045,.181,.086,.252,.12,0,0,.002,0,.003,.001,.059,.032,.109,.058,.155,.086,.038,.024,.071,.044,.089,.055,.033,.019,.067,.038,.095,.054,.024,.013,.047,.026,.065,.036,.003,.002,.006,.003,.009,.005,.009,.005,.015,.008,.019,.01h.002c.026,.016,.058,.034,.094,.055,.077,.044,.175,.1,.282,.162,.076,.044,.146,.086,.204,.122,.044,.027,.067,.043,.076,.048,.005,.003,.005,.003,.002,0l.051,.039,.055,.033c.084,.05,.168,.108,.272,.18,.047,.033,.099,.069,.157,.108l.039,.027,.034,.019s0,0,0,0c0,0,.022,.014,.074,.051,.059,.042,.129,.095,.207,.153,.029,.022,.06,.045,.092,.07,.047,.036,.096,.072,.137,.103,.054,.04,.12,.09,.18,.131,.87,.665,1.661,1.429,2.369,2.266-.752,.275-1.527,.49-2.316,.632h0c-1.726,.311-3.489,.32-5.199,.006h-.003s-.003-.001-.003-.001c-1.356-.241-2.671-.679-3.9-1.293,1.058-1.716,2.545-3.139,4.312-4.119ZM4.271,15.997c0-1.443,.262-2.824,.739-4.102,1.42,.707,2.936,1.211,4.497,1.489,1.989,.365,4.027,.353,6.01-.005h0c1.125-.203,2.222-.53,3.276-.961,.472,.784,.872,1.608,1.187,2.467-4.716,1.701-8.834,5.525-10.49,10.865-3.146-2.104-5.22-5.688-5.22-9.753Zm11.729,11.727c-1.578,0-3.083-.314-4.458-.88,1.333-4.797,4.937-8.236,9.068-9.774,.713,3.458,.196,7.16-1.521,10.246-.877,.239-1.794,.381-2.741,.408h-.348Zm6.183-1.757c1.089-3.039,1.298-6.372,.617-9.52,1.642-.332,3.314-.367,4.92-.076-.125,4.052-2.305,7.587-5.537,9.596Z" fill-rule="evenodd"></path>
+                            </svg>
+                            <span>Dribbble</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.behance.net/nirmalkrohit" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 hover:underline hover:underline-offset-2 group">
+                            <svg class="w-5 h-5 fill-current text-gray-500 group-hover:text-[#1769ff] transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                <path d="M10.144,7.203c.808,0,1.554,.062,2.238,.249,.684,.124,1.243,.373,1.741,.684s.87,.746,1.119,1.306c.249,.56,.373,1.243,.373,1.989,0,.87-.187,1.616-.622,2.176-.373,.56-.995,1.057-1.741,1.43,1.057,.311,1.865,.87,2.362,1.616s.808,1.679,.808,2.735c0,.87-.187,1.616-.497,2.238s-.808,1.181-1.368,1.554c-.56,.373-1.243,.684-1.989,.87-.746,.187-1.492,.311-2.238,.311H2V7.203H10.144Zm-.497,6.963c.684,0,1.243-.187,1.679-.497s.622-.87,.622-1.554c0-.373-.062-.746-.187-.995s-.311-.435-.56-.622c-.249-.124-.497-.249-.808-.311s-.622-.062-.995-.062h-3.606v4.041h3.854Zm.187,7.336c.373,0,.746-.062,1.057-.124s.622-.187,.87-.373c.249-.187,.435-.373,.622-.684,.124-.311,.249-.684,.249-1.119,0-.87-.249-1.492-.746-1.927-.497-.373-1.181-.56-1.989-.56H5.792v4.787h4.041Zm11.998-.062c.497,.497,1.243,.746,2.238,.746,.684,0,1.306-.187,1.803-.497,.497-.373,.808-.746,.933-1.119h3.046c-.497,1.492-1.243,2.549-2.238,3.233-.995,.622-2.176,.995-3.606,.995-.995,0-1.865-.187-2.673-.497s-1.43-.746-1.989-1.368c-.56-.56-.995-1.243-1.243-2.052-.311-.808-.435-1.679-.435-2.673,0-.933,.124-1.803,.435-2.611s.746-1.492,1.306-2.114c.56-.56,1.243-1.057,1.989-1.368,.808-.311,1.616-.497,2.611-.497,1.057,0,1.989,.187,2.798,.622s1.43,.933,1.927,1.679c.497,.684,.87,1.492,1.119,2.362,.124,.87,.187,1.741,.124,2.735h-9.014c0,.995,.373,1.927,.87,2.425Zm3.917-6.528c-.435-.435-1.119-.684-1.927-.684-.56,0-.995,.124-1.368,.311-.373,.187-.622,.435-.87,.684-.249,.249-.373,.56-.435,.87s-.124,.56-.124,.808h5.595c-.124-.933-.435-1.554-.87-1.989Zm-5.471-6.528h6.963v1.679h-6.963v-1.679Z"></path>
+                            </svg>
+                            <span>Behance</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/nkrohit13/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 hover:underline hover:underline-offset-2 group">
+                            <svg class="w-5 h-5 fill-current text-gray-500 group-hover:text-[#0077b5] transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                <path d="M26.111,3H5.889c-1.595,0-2.889,1.293-2.889,2.889V26.111c0,1.595,1.293,2.889,2.889,2.889H26.111c1.595,0,2.889-1.293,2.889-2.889V5.889c0-1.595-1.293-2.889-2.889-2.889ZM10.861,25.389h-3.877V12.87h3.877v12.519Zm-1.957-14.158c-1.267,0-2.293-1.034-2.293-2.31s1.026-2.31,2.293-2.31,2.292,1.034,2.292,2.31-1.026,2.31-2.292,2.31Zm16.485,14.158h-3.858v-6.571c0-1.802-.685-2.809-2.111-2.809-1.551,0-2.362,1.048-2.362,2.809v6.571h-3.718V12.87h3.718v1.686s1.118-2.069,3.775-2.069,4.556,1.621,4.556,4.975v7.926Z" fill-rule="evenodd"></path>
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-        ) : (
-            <p class="text-center text-gray-600">No projects available at the moment.</p>
-        )
-    }
-</BaseLayout>
+            
+            <footer class="mt-24 text-sm opacity-80">
+                &copy; {new Date().getFullYear()} Nirmal Rohit. All rights reserved.
+            </footer>
+        </main>
+    </body>
+</html>

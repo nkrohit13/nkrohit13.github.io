@@ -23,10 +23,39 @@ const navLinks = siteConfig.headerNavLinks || [];
                     class="menu flex gap-6 max-md:flex-col max-md:gap-1 max-md:absolute max-md:-top-2.5 max-md:-left-2.5 max-md:max-w-64 max-md:px-3 max-md:pt-16 max-md:pb-10 max-md:z-20 max-md:bg-main max-md:border max-md:border-dashed max-md:border-main"
                 >
                     {navLinks.map((link) => (
-                        <li class="py-1">
-                            <NavLink class="text-xl text-main hover:underline hover:underline-offset-2 hover:decoration-1 md:text-base" href={link.href}>
-                                {link.text}
-                            </NavLink>
+                        <li class="py-1 relative group">
+                            {link.items ? (
+                                <>
+                                    <button class="text-xl text-main hover:underline hover:underline-offset-2 hover:decoration-1 md:text-base flex items-center gap-1 cursor-pointer">
+                                        {link.text}
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-4 w-4 transition-transform group-hover:rotate-180"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <ul class="hidden group-hover:block md:absolute md:left-0 md:top-full md:pt-2 md:w-56 md:bg-main md:border md:border-dashed md:border-main md:shadow-lg pl-4 md:pl-0 z-50">
+                                        {link.items.map((subLink) => (
+                                            <li class="py-1 md:px-4 md:hover:bg-muted">
+                                                <NavLink
+                                                    class="text-lg text-main hover:underline hover:underline-offset-2 hover:decoration-1 md:text-sm block"
+                                                    href={subLink.href}
+                                                >
+                                                    {subLink.text}
+                                                </NavLink>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </>
+                            ) : (
+                                <NavLink class="text-xl text-main hover:underline hover:underline-offset-2 hover:decoration-1 md:text-base" href={link.href}>
+                                    {link.text}
+                                </NavLink>
+                            )}
                         </li>
                     ))}
                 </ul>

@@ -65,13 +65,23 @@ const siteConfig: SiteConfig = {
             href: '/projects'
         },
         {
+            text: 'Challenges',
+            href: '#',
+            items: [
+                {
+                    text: 'Squareplanet UI Design',
+                    href: '/challenges/squareplanet-ui'
+                },
+                {
+                    text: 'UXHack Weekend',
+                    href: '/challenges/uxhack-weekend'
+                }
+            ]
+        },
+        {
             text: 'About',
             href: '/about'
         },
-        // {
-        //     text: 'Challenges',
-        //     href: '/challenges'
-        // },
         {
             text: 'Contact',
             href: '/contact'
